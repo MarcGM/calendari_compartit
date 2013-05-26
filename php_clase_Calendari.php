@@ -110,16 +110,16 @@ class Calendari
 		return $numAData;
 	}
 	public function getDiaActualNum()
-	{
+	{	
 		$diaActualNum = getdate();
 		
-		return $diaActualNum[mday];
+		return $diaActualNum['mday'];
 	}
 	public function getMesActualNum()
 	{
 		$mesActualNum = getdate();
 		
-		return $mesActualNum[mon];
+		return $mesActualNum['mon'];
 	}
 	public function getMesVisibleNom()
 	{
@@ -145,7 +145,7 @@ class Calendari
 	{
 		$anyActualNum = getdate();
 		
-		return $anyActualNum[year];
+		return $anyActualNum['year'];
 	}
 }
 

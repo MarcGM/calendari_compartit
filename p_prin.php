@@ -51,7 +51,7 @@ session_start();
 			<!-- Div on estarà ubicat el formulari per a crear events. -->
 			<div id="divRequadreAfegirTasca">
 				<?php
-				echo "<h2>$diaCasellaActualMes de ".$calend_1->getMesVisibleNom()." del $anyCasellesActualMes</h2>";
+				echo "<h2>".$_SESSION['requadreCaselaActual']." de ".$calend_1->getMesVisibleNom()." del ".$_SESSION['anyVisible']."</h2>";
 				?>
 			</div>
 			<table id="table_Mes">
@@ -82,7 +82,8 @@ session_start();
 								echo $requadreCasellaActual = $calend_1->comprovarNum1($cont_caselles); 
 								
 								if($requadreCasellaActual != ""){
-									$diaCasellaActualMes = $requadreCasellaActual;
+									$_SESSION['requadreCaselaActual'] = $requadreCasellaActual;
+									$diaCasellaActualMes = $_SESSION['requadreCaselaActual'];
 									$mesCasellaActualMes = $_SESSION['mesVisible'];
 									$anyCasellesActualMes = $_SESSION['anyVisible'];
 								}
@@ -90,9 +91,7 @@ session_start();
 							</div>
 							<?php
 							if($requadreCasellaActual != ""){
-								?>
-								<div class="divAfegirTasca" onclick="metode_afegirTasca($diaCasellaActualMes, $mesCasellaActualMes, $anyCasellesActualMes)">+</div>
-								<?php
+								echo '<div class="divAfegirTasca" onclick="metode_afegirTasca('.$diaCasellaActualMes.', '.$mesCasellaActualMes.', '.$anyCasellesActualMes.')">+</div>';
 							}
 							?>
 						</td>
