@@ -1,0 +1,27 @@
+/*
+ * ESTILS DE LA PÀGINA "p_registre.php".
+ */
+
+body{
+	height:91%;
+}
+
+#div_formRegistre{
+	border-color: #000000;
+	border-width: 3px;
+	border-style: solid;
+	border-radius: 3px;
+	width: 320px;
+	height: 175px;
+	font-size: 18px;
+	font-family:"Times New Roman";
+	text-align:center;
+	padding-top:20px;
+	padding-bottom:72px;
+	margin: auto;
+	margin-top: 8%;
+}
+#div_tornarPagPrin{
+	text-align:center;
+	margin-top: 20px;
+}

@@ -1,0 +1,127 @@
+/*
+ * ESTILS DE LA PÀGINA "index.php".
+ */
+
+#div_formLogin{
+	border-color: #000000;
+	border-width: 3px;
+	border-style: solid;
+	border-radius: 3px;
+	width: 320px;
+	height: 175px;
+	font-size: 18px;
+	font-family:"Times New Roman";
+	text-align:center;
+	padding-top:20px;
+	padding-bottom:20px;
+	margin: auto;
+	margin-top: 10%;
+}
+
+/*
+ * ESTILS DE LA PÀGINA "p_prin.php".
+ */
+
+html, body{
+	height: 88%;
+	width: 99%;
+}
+#div_taulaMes{
+	height: 90%;
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 6%;
+	margin-bottom: 13%;
+}
+#table_Mes{
+	height: 100%;
+	width: 100%;
+}
+#table_Mes td{
+	/* Aquesta és la amplada que ha de fer cadascuna de les ce·les perquè totes facin la mateixa amplada. */
+	width: 14%;
+	height: 10%;
+	vertical-align: top;
+}
+#table_Mes, #table_Mes tr, #table_Mes td{
+	border-color: #000000;
+	border-width: 1px;
+	border-style: solid;
+	border-spacing: 0px;
+	border-radius: 4px;
+}
+#titols_dies_setmana{
+	text-align: center;
+	height: 20px;
+	background-color: #006699;
+	font-weight: bold;
+	font-size: 19px;
+}
+#link_tancarSessio{
+	text-align: right;
+	margin-top:0px;
+	font-size:14px;
+}
+#link_anarMesActual{
+	text-align: left;
+	margin-top:0px;
+	font-size:14px;
+	position: absolute;
+}
+#nomMesIAny{
+	font-size:40px;
+	font-family:"Comic Sans MS";
+	text-decoration:underline;
+	margin-bottom:60px;
+	text-align:center;
+}
+#fletxaMesAnterior{
+	font-size:40px;
+	font-family:"Comic Sans MS";
+	margin-left: 1%;
+	margin-top: 5.5%;
+	float:left;
+	width:0%;
+	height:0%;
+	text-decoration: none;
+}
+#fletxaMesSeguent{
+	font-size:40px;
+	font-family:"Comic Sans MS";
+	margin-bottom:60px;
+	float:right;
+	margin-right: 4%;
+	margin-top: 5.5%;
+	width:0%;
+	height:0%;
+	text-decoration: none;
+}
+.espaiNumCeles{
+	margin-bottom: 0%;
+	height: 100%;
+	width: 13%;
+	font-weight: bold;
+	text-decoration: underline;
+}
+.divAfegirTasca{
+	margin-right: 3px;
+	margin-top: -17px;
+	float:right;
+	text-align:right;
+	position:relative;
+	text-decoration: none;
+	font-weight: bold;
+	font-size: 16px;
+	color: blue;
+}
+#divRequadreAfegirTasca{
+	display: none;
+	position:fixed;
+	border-color: #000;
+	border-style:solid;
+	border-width:2px;
+	border-radius: 3px;
+	background-color: #fff;
+	z-index: 1001;
+}
