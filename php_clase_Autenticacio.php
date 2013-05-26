@@ -1,7 +1,7 @@
 <?php
 include_once 'declaracio_clases.php';
 
-error_reporting(0);
+//error_reporting(0);
 
 class Autenticacio
 {			
@@ -13,7 +13,7 @@ class Autenticacio
 		$contrasenyaLogin = $_POST['inputPassword_formLogin'];
 		
 		$novaConexio->obrirConnexio();
-		$consultaUsuari = mysqli_query($novaConexio->connexio,"SELECT idUsuari, contrasenya FROM usuaris WHERE idUsuari = '$usuariLogin' AND contrasenya = '$contrasenyaLogin'")
+		$consultaUsuari = mysqli_query($novaConexio->connexio,"SELECT idUsuari, contrasenya FROM usuaris_MarcGM WHERE idUsuari = '$usuariLogin' AND contrasenya = '$contrasenyaLogin'")
 			or die("Ha fallat la consulta: ".mysql_error());
 		$novaConexio->tancarConnexio();
 		
