@@ -88,8 +88,8 @@ session_start();
 							</div>
 							<?php
 							if($requadreCasellaActual != ""){
-							$mesCasellaActualMesNom = $_SESSION['mesCasellaActualMesNom'];
-							echo '<div class="divAfegirTasca" onclick="metode_afegirTasca('.$diaCasellaActualMes.', '.$mesCasellaActualMesNom.', '.$anyCasellesActualMes.')">+</div>';
+							//$mesCasellaActualMesNom = $_SESSION['mesCasellaActualMesNom'];
+							//echo '<div class="divAfegirTasca" onclick="metode_afegirTasca('.$diaCasellaActualMes.', '.$mesCasellaActualMesNom.', '.$anyCasellesActualMes.')">+</div>';
 							}
 							?>
 						</td>
