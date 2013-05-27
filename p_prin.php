@@ -28,6 +28,7 @@ session_start();
 			$_SESSION['mesVisible'] = $calend_1->getMesActualNum();
 			$_SESSION['anyVisible'] = $calend_1->anyActualNum;
 			$_SESSION['acabatDeLoguejar'] = false;
+			$_SESSION['mesCasellaActualNomMes'] = $calend_1->getMesVisibleNom();
 		}
 	?>
 	<body>
@@ -46,11 +47,16 @@ session_start();
 			<div id="nomMesIAny">
 			<?php
 				echo $calend_1->getMesVisibleNom()." DEL ".$_SESSION['anyVisible'];
-				$_SESSION['mesCasellaActualMesNom'] = $calend_1->getMesVisibleNom();
 			?>
 			</div>
 			<!-- Div on estarà ubicat el formulari per a crear events. -->
-			<div id="divRequadreAfegirTasca"> </div>
+			<div id="divRequadreAfegirTasca">
+				<div id="div_form_RequadreAfegirTasca">
+					Hora:
+					<!-- Aquí va un "select". -->
+				</div>
+			</div>
+			
 			<table id="table_Mes">
 				<tr id="titols_dies_setmana">
 					<td class="titol_diaSetmana">Diluns</td>
@@ -88,8 +94,8 @@ session_start();
 							</div>
 							<?php
 							if($requadreCasellaActual != ""){
-							//$mesCasellaActualMesNom = $_SESSION['mesCasellaActualMesNom'];
-							//echo '<div class="divAfegirTasca" onclick="metode_afegirTasca('.$diaCasellaActualMes.', '.$mesCasellaActualMesNom.', '.$anyCasellesActualMes.')">+</div>';
+								$mesCasellaActualMesNom = $calend_1->getMesVisibleNom();
+								echo '<div class="divAfegirTasca" onclick="metode_afegirTasca('.$diaCasellaActualMes.', \''.$mesCasellaActualMesNom.'\', '.$anyCasellesActualMes.')">+</div>';
 							}
 							?>
 						</td>

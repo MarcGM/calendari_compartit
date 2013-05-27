@@ -125,14 +125,20 @@ html, body{
 	border-radius: 3px;
 	width: 450px;
 	height: 175px;
-	padding-top:20px;
-	padding-bottom:20px;
-	/*
+	
 	margin-left: 27.2%;
 	margin-right: 27.2%;
-	*/
 	background-color: #fff;
 	z-index: 1001;
+}
+#divRequadreAfegirTasca h2{
+	text-align: center;
+	text-decoration: underline;
+	
+	margin-top: 8px;
+}
+#div_form_RequadreAfegirTasca{
+	
 }
 #div_formLogin{
 	border-color: #000000;
