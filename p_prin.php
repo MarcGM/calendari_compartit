@@ -46,14 +46,11 @@ session_start();
 			<div id="nomMesIAny">
 			<?php
 				echo $calend_1->getMesVisibleNom()." DEL ".$_SESSION['anyVisible'];
+				$_SESSION['mesCasellaActualMesNom'] = $calend_1->getMesVisibleNom();
 			?>
 			</div>
 			<!-- Div on estarà ubicat el formulari per a crear events. -->
-			<div id="divRequadreAfegirTasca">
-				<?php
-				echo "<h2>".$_SESSION['requadreCaselaActual']." de ".$calend_1->getMesVisibleNom()." del ".$_SESSION['anyVisible']."</h2>";
-				?>
-			</div>
+			<div id="divRequadreAfegirTasca"> </div>
 			<table id="table_Mes">
 				<tr id="titols_dies_setmana">
 					<td class="titol_diaSetmana">Diluns</td>
@@ -78,12 +75,12 @@ session_start();
 						<td id="mes_F<?php echo $cont_fila + 1; ?>C<?php echo $cont_columna + 1; ?>">
 							<div class="espaiNumCeles">
 								<?php
+								$requadreCasellaActual = $calend_1->comprovarNum1($cont_caselles);
 								//Aquest "echo" mostra el número de dia segons el mes.
-								echo $requadreCasellaActual = $calend_1->comprovarNum1($cont_caselles); 
+								echo $requadreCasellaActual; 
 								
 								if($requadreCasellaActual != ""){
-									$_SESSION['requadreCaselaActual'] = $requadreCasellaActual;
-									$diaCasellaActualMes = $_SESSION['requadreCaselaActual'];
+									$diaCasellaActualMes = $requadreCasellaActual;
 									$mesCasellaActualMes = $_SESSION['mesVisible'];
 									$anyCasellesActualMes = $_SESSION['anyVisible'];
 								}
@@ -91,7 +88,8 @@ session_start();
 							</div>
 							<?php
 							if($requadreCasellaActual != ""){
-								echo '<div class="divAfegirTasca" onclick="metode_afegirTasca('.$diaCasellaActualMes.', '.$mesCasellaActualMes.', '.$anyCasellesActualMes.')">+</div>';
+							$mesCasellaActualMesNom = $_SESSION['mesCasellaActualMesNom'];
+							echo '<div class="divAfegirTasca" onclick="metode_afegirTasca('.$diaCasellaActualMes.', '.$mesCasellaActualMesNom.', '.$anyCasellesActualMes.')">+</div>';
 							}
 							?>
 						</td>
