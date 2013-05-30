@@ -51,9 +51,48 @@ session_start();
 			</div>
 			<!-- Div on estarà ubicat el formulari per a crear events. -->
 			<div id="divRequadreAfegirTasca">
+				<div id="titol_RequadreAfegirTasca"> </div>
 				<div id="div_form_RequadreAfegirTasca">
-					Hora:
-					<!-- Aquí va un "select". -->
+					<div id="camps_hora">
+						<label>Hora</label>
+						<select id="select_hores">
+							<?php
+							for($cont = 0; $cont<24; $cont++){
+								if($cont > 9){
+									$contMostrar = (string)$cont;
+								}else{
+									$contMostrar = "0".$cont;
+								}
+								echo '<option id="idHora_'.$cont.'">'.$contMostrar.'</option>';
+							}
+							?>
+						</select>
+						:
+						<select id="select_minuts">
+							<?php
+							for($cont = 0; $cont<60; $cont++){
+								if($cont > 9){
+									$contMostrar = (string)$cont;
+								}else{
+									$contMostrar = "0".$cont;
+								}
+								echo '<option id="idMinut_'.$cont.'">'.$contMostrar.'</option>';
+							}
+							?>
+						</select>
+					</div>
+					<div id="camps_descripcio">
+						<label>Descripció</label>
+						<textarea id="textArea_Descripcio" maxlength="100" cols="35" rows="3"> </textarea>
+					</div>
+					<div id="camps_compartirEvent">
+						<label>Compartir event?</label>
+						<input id="inputCheckbox_compartirEvent" type="checkbox" />
+					</div>
+					<div id="botonsAccions">
+						<button id"botoCrearTasca">Crear tasca</button>
+						<button id"botoCancelarTasca">Cancelar tasca</button>
+					</div>
 				</div>
 			</div>
 			
