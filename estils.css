@@ -70,7 +70,7 @@ html, body{
 	position: absolute;
 }
 #nomMesIAny{
-	font-size:40px;
+	font-size:36px;
 	font-family:"Comic Sans MS";
 	text-decoration:underline;
 	margin-bottom:60px;
@@ -124,7 +124,7 @@ html, body{
 	border-width:2px;
 	border-radius: 3px;
 	width: 450px;
-	height: 266px;
+	height: 300px;
 	
 	margin-left: 27.2%;
 	margin-right: 27.2%;
@@ -156,6 +156,9 @@ html, body{
 	margin: auto;
 	margin-top: 10%;
 }
+#botonsAccions{
+	margin-top: 18px;
+}
 
 #select_minuts{
 	margin-left: -2px;
@@ -177,4 +180,17 @@ html, body{
 }
 #camps_hora label, #camps_descripcio label, #camps_compartirEvent label{
 	margin-right: 10px;
+}
+#camps_hora{
+	margin-top: 18px;
+}
+#botoCancelarTasca{
+	float: left;
+}
+#botoCrearTasca{
+	float: right;
+	margin-right: 29px;
+}
+#mes_F5C7{
+	/*background-color:black;*/
 }

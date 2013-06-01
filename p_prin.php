@@ -13,6 +13,8 @@ session_start();
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		
 		<link rel="StyleSheet" href="estils.css" type="text/css">
+		
+		<script type="text/javascript" src="jquery-1.9.1.js"></script>
 		<script type="text/javascript" src="scripts.js"></script>
 		<?php
 		include_once 'declaracio_clases.php';
@@ -53,6 +55,10 @@ session_start();
 			<div id="divRequadreAfegirTasca">
 				<div id="titol_RequadreAfegirTasca"> </div>
 				<div id="div_form_RequadreAfegirTasca">
+					<div id="camps_nomTasca">
+						<label>Nom</label>
+						<input type="text" id="input_nomTasca" name="input_nomTasca" />
+					</div>
 					<div id="camps_hora">
 						<label>Hora</label>
 						<select id="select_hores">
@@ -83,15 +89,15 @@ session_start();
 					</div>
 					<div id="camps_descripcio">
 						<label>Descripció</label>
-						<textarea id="textArea_Descripcio" maxlength="100" cols="35" rows="3"> </textarea>
+						<textarea id="textArea_Descripcio" maxlength="100" cols="35" rows="2"> </textarea>
 					</div>
 					<div id="camps_compartirEvent">
 						<label>Compartir event?</label>
 						<input id="inputCheckbox_compartirEvent" type="checkbox" />
 					</div>
 					<div id="botonsAccions">
-						<button id"botoCrearTasca">Crear tasca</button>
-						<button id"botoCancelarTasca">Cancelar tasca</button>
+						<button id="botoCrearTasca" onclick="click_botoCrearTasca(input_nomTasca.value,select_hores.value,select_minuts.value,textArea_Descripcio.value,inputCheckbox_compartirEvent.checked)">Crear tasca</button>
+						<button id="botoCancelarTasca" onclick="click_botoCancelarTasca()">Cancelar tasca</button>
 					</div>
 				</div>
 			</div>
@@ -118,6 +124,11 @@ session_start();
 						for($cont_columna = 0; $cont_columna < 7; $cont_columna++){
 						?>
 						<td id="mes_F<?php echo $cont_fila + 1; ?>C<?php echo $cont_columna + 1; ?>">
+							<?php
+							$sumaFila = $cont_fila + 1;
+							$sumaColumna = $cont_columna + 1;
+							$idCela = "mes_F".$sumaFila."C".$sumaColumna;
+							?>
 							<div class="espaiNumCeles">
 								<?php
 								$requadreCasellaActual = $calend_1->comprovarNum1($cont_caselles);
@@ -128,6 +139,10 @@ session_start();
 									$diaCasellaActualMes = $requadreCasellaActual;
 									$mesCasellaActualMes = $_SESSION['mesVisible'];
 									$anyCasellesActualMes = $_SESSION['anyVisible'];
+									
+									if($calend_1->getDiaActualNum() == $diaCasellaActualMes && $calend_1->getMesActualNum() == $mesCasellaActualMes && $calend_1->getAnyActualNum() == $anyCasellesActualMes){
+										echo '<script type="text/javascript">pintarCelaDiaActual("'.$idCela.'");</script>';
+									}									
 								}
 								?>
 							</div>
