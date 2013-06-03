@@ -22,19 +22,19 @@ function click_botoCancelarTasca(){
 	document.getElementById('textArea_Descripcio').value = "";
 	document.getElementById('inputCheckbox_compartirEvent').checked = 0;
 }
-function click_botoCrearTasca(nomTasca,select_hores,select_minuts,textArea_Descripcio,Checkbox_compartirEvent,mesAfegirTasca){
+function click_botoCrearTasca(nomTasca,select_hores,select_minuts,textArea_Descripcio,Checkbox_compartirEvent,mesAfegirTasca,usuariLoguejat){
 	alert(nomTasca+" "+select_hores+" "+select_minuts+" "+textArea_Descripcio+" "+Checkbox_compartirEvent);
 	//Comprovar si els camps requerits estan omplerts.
 	if(document.getElementById('input_nomTasca').value == null){
 		alert('El nom és obligatori!!!');
 	}else{
-		inserirDadesBD(nomTasca,select_hores,select_minuts,textArea_Descripcio,Checkbox_compartirEvent,diaAfegirTasca,mesAfegirTasca,anyAfegirTasca);
+		inserirDadesBD(nomTasca,select_hores,select_minuts,textArea_Descripcio,Checkbox_compartirEvent,diaAfegirTasca,mesAfegirTasca,anyAfegirTasca,usuariLoguejat);
 	}
 	
 	//Si estan bé, passar les dades a un fitxer "php" per JSON Ajax i inserir-les.
 	//Si estan malament, notificar-ho.
 }
-function inserirDadesBD(nomTasca,select_hores,select_minuts,textArea_Descripcio,Checkbox_compartirEvent,diaAfegirTasca,mesAfegirTasca,anyAfegirTasca){
+function inserirDadesBD(nomTasca,select_hores,select_minuts,textArea_Descripcio,Checkbox_compartirEvent,diaAfegirTasca,mesAfegirTasca,anyAfegirTasca,usuariAfegirTasca){
 	
 	var dadesTasca = new Array();
 	
@@ -46,7 +46,8 @@ function inserirDadesBD(nomTasca,select_hores,select_minuts,textArea_Descripcio,
 		"compartir": Checkbox_compartirEvent,
 		"diaTasca": diaAfegirTasca,
 		"mesTasca": mesAfegirTasca,
-		"anyTasca": anyAfegirTasca
+		"anyTasca": anyAfegirTasca,
+		"usuariTasca": usuariAfegirTasca
 	};
 	var dadesTascaStringJSON = JSON.stringify(dadesTasca);
 	enviarDadesServidor(dadesTascaStringJSON,"afegirTascaCalendari.php");
@@ -72,6 +73,8 @@ function enviarDadesServidor(campsTascaJSON,arxiu){
 			//Agafa la posició associativa "resultat" del array associatiu.
 			resultat = dadesDecodificades['resultat'];
 			//mostrarMissatges(resultat,accio);
+			console.log(" ");
+			console.log(resultat);
 		}
 	}
 }

@@ -95,7 +95,7 @@ session_start();
 						<input id="inputCheckbox_compartirEvent" type="checkbox" />
 					</div>
 					<div id="botonsAccions">
-						<button id="botoCrearTasca" onclick="click_botoCrearTasca(input_nomTasca.value,select_hores.value,select_minuts.value,textArea_Descripcio.value,inputCheckbox_compartirEvent.checked,<?php echo $_SESSION['mesVisible']; ?> )">Crear tasca</button>
+						<button id="botoCrearTasca" onclick="click_botoCrearTasca(input_nomTasca.value,select_hores.value,select_minuts.value,textArea_Descripcio.value,inputCheckbox_compartirEvent.checked,<?php echo $_SESSION['mesVisible'] ?>,'<?php echo $_SESSION['idUsuariLoguejat'] ?>' )">Crear tasca</button>
 						<button id="botoCancelarTasca" onclick="click_botoCancelarTasca()">Cancelar tasca</button>
 					</div>
 				</div>
