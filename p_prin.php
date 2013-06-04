@@ -100,6 +100,11 @@ session_start();
 					</div>
 				</div>
 			</div>
+				
+			<div id="emergentMissatgeDadesCorrectes">
+				<div id="titolEmergentMissatgeDadesCorrectes">Les dades s'han inserit correctament a la base de dades!</div>
+				<div id="iconeEmergentMissatgeDadesCorrectes"> </div>
+			</div>
 			
 			<table id="table_Mes">
 				<tr id="titols_dies_setmana">
@@ -148,6 +153,9 @@ session_start();
 							<?php
 							if($requadreCasellaActual != ""){
 								$mesCasellaActualMesNom = $calend_1->getMesVisibleNom();
+								
+								$numeroTasquesCasellaActual = $calend_1->getNumeroTasquesCasellaActual($diaCasellaActualMes,$_SESSION['mesVisible'],$anyCasellesActualMes);
+								echo $numeroTasquesCasellaActual;
 								echo '<div class="divAfegirTasca" onclick="metode_afegirTasca('.$diaCasellaActualMes.', \''.$mesCasellaActualMesNom.'\', '.$anyCasellesActualMes.')">+</div>';
 							}
 							?>

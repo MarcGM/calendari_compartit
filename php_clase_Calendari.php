@@ -147,6 +147,31 @@ class Calendari
 		
 		return $anyActualNum['year'];
 	}
+	public function getNumeroTasquesCasellaActual($dia,$mes,$any)
+	{
+		$dataIniciConvertidaIJunta = $this->convertirADate($dia,$mes,$any,0,0);
+		$dataFiConvertidaIJunta = $this->convertirADate($dia,$mes,$any,23,59);
+		$numeroTasques = $this->consultarNumeroTasques($dataIniciConvertidaIJunta,$dataFiConvertidaIJunta);
+		
+		return $numeroTasques;
+	}
+	public function convertirADate($diaTasca,$mesTasca,$anyTasca,$horaTasca,$minutTasca)
+	{
+		$cadenaPerInserirMySQL = date("Y-m-d H:i:s", mktime((int)$horaTasca,(int)$minutTasca,0,(int)$mesTasca,(int)$diaTasca,(int)$anyTasca));
+		
+		return $cadenaPerInserirMySQL;
+	}
+	public function consultarNumeroTasques($dataInici,$dataFi)
+	{
+		$novaConexio = new ConexioBD("127.0.0.1","uf3_pt2","usuari","contrasenya");
+		$novaConexio->obrirConnexio();
+		$consultaUsuari = mysqli_query($novaConexio->connexio,"SELECT * FROM tasques WHERE dataTasca >= '".$dataInici."' && dataTasca <= '".$dataFi."'")
+			or die("Ha fallat la consulta: ".mysql_error());
+		$novaConexio->tancarConnexio();
+		$numeroRegistres = mysqli_num_rows($consultaUsuari);
+		
+		return $numeroRegistres;
+	}
 }
 
 

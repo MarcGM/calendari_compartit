@@ -23,7 +23,6 @@ function click_botoCancelarTasca(){
 	document.getElementById('inputCheckbox_compartirEvent').checked = 0;
 }
 function click_botoCrearTasca(nomTasca,select_hores,select_minuts,textArea_Descripcio,Checkbox_compartirEvent,mesAfegirTasca,usuariLoguejat){
-	alert(nomTasca+" "+select_hores+" "+select_minuts+" "+textArea_Descripcio+" "+Checkbox_compartirEvent);
 	//Comprovar si els camps requerits estan omplerts.
 	if(document.getElementById('input_nomTasca').value == null){
 		alert('El nom és obligatori!!!');
@@ -67,15 +66,27 @@ function enviarDadesServidor(campsTascaJSON,arxiu){
 		if(xmlHttp.readyState===4 && xmlHttp.status===200){	
 			//Reb la informació (en aquest cas en format JSON).
 			dadesRebudes = xmlHttp.responseText;
-			console.log("ggg"+dadesRebudes);
+			console.log("1"+dadesRebudes);
 			//Transforma el string JSON en un array de Javascript.
 			dadesDecodificades = JSON.parse(dadesRebudes);
+			console.log("2"+dadesDecodificades);
 			//Agafa la posició associativa "resultat" del array associatiu.
 			resultat = dadesDecodificades['resultat'];
-			//mostrarMissatges(resultat,accio);
-			console.log(" ");
-			console.log(resultat);
+			console.log("3"+resultat);
+			mostrarMissatges(resultat);
 		}
+	}
+}
+function mostrarMissatges(resultat){
+	if(resultat == true){
+		click_botoCancelarTasca();
+		//Mostra el missatge de "Insertat correctament".
+		document.getElementById('emergentMissatgeDadesCorrectes').style.display="block";
+		alert('iihglhukji');
+	}else{
+		click_botoCancelarTasca();
+		//Mostra un missatge de "No s'ha pogut inserir".
+		
 	}
 }
 function pintarCelaDiaActual(idCela){

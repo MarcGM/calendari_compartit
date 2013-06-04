@@ -194,3 +194,24 @@ html, body{
 #mes_F5C7{
 	/*background-color:black;*/
 }
+#emergentMissatgeDadesCorrectes{
+	display: none;
+	position: fixed;
+	border-color: #000000;
+	border-style: solid;
+	border-width:2px;
+	border-radius: 3px;
+	width: 450px;
+	height: 300px;
+	
+	margin-left: 27.2%;
+	margin-right: 27.2%;
+	background-color: #fff;
+	z-index: 1010;
+}
+#titolEmergentMissatgeDadesCorrectes{
+	text-align: center;
+	text-decoration: underline;
+	
+	margin-top: 200px;
+}

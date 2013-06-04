@@ -7,7 +7,7 @@ class Autenticacio
 {			
 	public function consultarUsuariIContrasenya($usuariComprovar, $contrasenyaComprovar)
 	{
-		$novaConexio = new ConexioBD("localhost","uf3_pt2","usuari","contrasenya");
+		$novaConexio = new ConexioBD("127.0.0.1","uf3_pt2","usuari","contrasenya");
 			
 		$usuariLogin = $_POST['inputName_formLogin'];
 		$contrasenyaLogin = $_POST['inputPassword_formLogin'];
