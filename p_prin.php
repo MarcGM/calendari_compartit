@@ -18,7 +18,7 @@ session_start();
 		<?php
 		include_once 'declaracio_clases.php';
 		
-		//error_reporting(0);
+		error_reporting(0);
 		?>
 		<title>UF3_Pt1_ex5</title>
 	</head>

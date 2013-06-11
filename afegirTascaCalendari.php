@@ -1,10 +1,10 @@
 <?php
 	include_once 'declaracio_clases.php';
-	//error_reporting(0);
+	error_reporting(0);
 
 
 	
-	$dadesNovaTasca = $_POST['dadesTasca'];	
+	$dadesNovaTasca = $_POST['dadesTasca'];
 	$arrayDades = json_decode($dadesNovaTasca,true);
 	
 	if($arrayDades['accio'] == "inserirDadesBD"){

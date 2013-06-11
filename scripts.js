@@ -73,7 +73,7 @@ function enviarDadesServidor(campsTascaJSON,arxiu){
 			dadesRebudes = xmlHttp.responseText;
 			console.log(dadesRebudes);
 			//Transforma el string JSON en un array de Javascript.
-			dadesDecodificades = JSON.parse(dadesRebudes);
+			//dadesDecodificades = JSON.parse(dadesRebudes);
 			console.log(dadesDecodificades);
 			return dadesDecodificades;
 		}
@@ -96,7 +96,7 @@ function pintarCelaDiaActual(idCela){
 }
 
 function metode_veureTasques(dia,mes,any,usuari){
-	var dadesTasca = new Array();
+	//var dadesTasca = new Array();
 	
 	dadesTasca = {
 		"dia": dia,
@@ -105,9 +105,14 @@ function metode_veureTasques(dia,mes,any,usuari){
 		"usuari": usuari,
 		"accio": "veureTasques"
 	};
+	console.log("hjbkl");
 	var dadesTascaStringJSON = JSON.stringify(dadesTasca);
+	console.log(dadesTascaStringJSON);
+	console.log("dadesTascaStringJSON");
 	var resultat = enviarDadesServidor(dadesTascaStringJSON,"afegirTascaCalendari.php");
+	console.log("resultat");
 	//Acció que es farà amb les dades rebudes "resultat".
+	console.log(resultat);
 }
 function tancaremergentMissatgeDadesCorrectes(){
 	click_botoCancelarTasca();

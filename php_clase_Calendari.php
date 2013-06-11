@@ -1,7 +1,7 @@
 <?php
 include_once 'declaracio_clases.php';
 
-//error_reporting(0);
+error_reporting(0);
 
 class Calendari
 {	
