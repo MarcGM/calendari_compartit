@@ -104,6 +104,7 @@ session_start();
 			<div id="emergentMissatgeDadesCorrectes">
 				<div id="titolEmergentMissatgeDadesCorrectes">Les dades s'han inserit correctament a la base de dades!</div>
 				<div id="iconeEmergentMissatgeDadesCorrectes"> </div>
+				<div id="iconeTancaremergentMissatgeDadesCorrectes" onclick="tancaremergentMissatgeDadesCorrectes();">X</div>
 			</div>
 			
 			<table id="table_Mes">
@@ -153,9 +154,10 @@ session_start();
 							<?php
 							if($requadreCasellaActual != ""){
 								$mesCasellaActualMesNom = $calend_1->getMesVisibleNom();
+								$usuariLogejat = $_SESSION['idUsuariLoguejat'];
 								
 								$numeroTasquesCasellaActual = $calend_1->getNumeroTasquesCasellaActual($diaCasellaActualMes,$_SESSION['mesVisible'],$anyCasellesActualMes);
-								echo $numeroTasquesCasellaActual;
+								echo '<div class="divNumeroTasques" onclick="metode_veureTasques('.$diaCasellaActualMes.', \''.$_SESSION['mesVisible'].'\', '.$anyCasellesActualMes.', \''.$usuariLogejat.'\')"><u>'.$numeroTasquesCasellaActual.'</u> tasca/ques</div>';
 								echo '<div class="divAfegirTasca" onclick="metode_afegirTasca('.$diaCasellaActualMes.', \''.$mesCasellaActualMesNom.'\', '.$anyCasellesActualMes.')">+</div>';
 							}
 							?>

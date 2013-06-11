@@ -107,7 +107,7 @@ html, body{
 .divAfegirTasca{
 	cursor: pointer;
 	margin-right: 3px;
-	margin-top: -17px;
+	/*top: -129%;*/
 	float:right;
 	text-align:right;
 	position:relative;
@@ -115,6 +115,7 @@ html, body{
 	font-weight: bold;
 	font-size: 16px;
 	color: blue;
+	margin-top:0px;
 }
 #divRequadreAfegirTasca{
 	display: none;
@@ -126,6 +127,7 @@ html, body{
 	width: 450px;
 	height: 300px;
 	
+	margin-top: -8%;
 	margin-left: 27.2%;
 	margin-right: 27.2%;
 	background-color: #fff;
@@ -202,7 +204,7 @@ html, body{
 	border-width:2px;
 	border-radius: 3px;
 	width: 450px;
-	height: 300px;
+	height: 100px;
 	
 	margin-left: 27.2%;
 	margin-right: 27.2%;
@@ -213,5 +215,21 @@ html, body{
 	text-align: center;
 	text-decoration: underline;
 	
-	margin-top: 200px;
+	margin-top: 55px;
+}
+.divNumeroTasques{
+	/*top: -35%;*/
+	margin-top:2px;
+	position: relative;
+	text-align: right;
+	margin-right: 3%;
+	cursor: pointer;
+	color: blue;
+	text-decoration: underline;
+}
+#iconeTancaremergentMissatgeDadesCorrectes{
+	float: right;
+	margin-right: 7px;
+	margin-top: -72px;
+	cursor: pointer;
 }

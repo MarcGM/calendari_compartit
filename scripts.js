@@ -29,13 +29,12 @@ function click_botoCrearTasca(nomTasca,select_hores,select_minuts,textArea_Descr
 	}else{
 		inserirDadesBD(nomTasca,select_hores,select_minuts,textArea_Descripcio,Checkbox_compartirEvent,diaAfegirTasca,mesAfegirTasca,anyAfegirTasca,usuariLoguejat);
 	}
-	
-	//Si estan bé, passar les dades a un fitxer "php" per JSON Ajax i inserir-les.
-	//Si estan malament, notificar-ho.
 }
 function inserirDadesBD(nomTasca,select_hores,select_minuts,textArea_Descripcio,Checkbox_compartirEvent,diaAfegirTasca,mesAfegirTasca,anyAfegirTasca,usuariAfegirTasca){
 	
 	var dadesTasca = new Array();
+	var dadesDecodificades = new Array();
+	var resultat = new Array();
 	
 	dadesTasca = {
 		"nom_tasca": nomTasca,
@@ -46,10 +45,16 @@ function inserirDadesBD(nomTasca,select_hores,select_minuts,textArea_Descripcio,
 		"diaTasca": diaAfegirTasca,
 		"mesTasca": mesAfegirTasca,
 		"anyTasca": anyAfegirTasca,
-		"usuariTasca": usuariAfegirTasca
+		"usuariTasca": usuariAfegirTasca,
+		"accio": "inserirDadesBD"
 	};
 	var dadesTascaStringJSON = JSON.stringify(dadesTasca);
-	enviarDadesServidor(dadesTascaStringJSON,"afegirTascaCalendari.php");
+	dadesDecodificades = enviarDadesServidor(dadesTascaStringJSON,"afegirTascaCalendari.php");
+	console.log(dadesDecodificades);
+	//Agafa la posició associativa "resultat" del array associatiu.
+	//resultat = dadesDecodificades['resultat'];
+	//console.log(resultat);
+	mostrarMissatges("true");
 }
 function enviarDadesServidor(campsTascaJSON,arxiu){
 	var dadesRebudes;
@@ -66,23 +71,19 @@ function enviarDadesServidor(campsTascaJSON,arxiu){
 		if(xmlHttp.readyState===4 && xmlHttp.status===200){	
 			//Reb la informació (en aquest cas en format JSON).
 			dadesRebudes = xmlHttp.responseText;
-			console.log("1"+dadesRebudes);
+			console.log(dadesRebudes);
 			//Transforma el string JSON en un array de Javascript.
 			dadesDecodificades = JSON.parse(dadesRebudes);
-			console.log("2"+dadesDecodificades);
-			//Agafa la posició associativa "resultat" del array associatiu.
-			resultat = dadesDecodificades['resultat'];
-			console.log("3"+resultat);
-			mostrarMissatges(resultat);
+			console.log(dadesDecodificades);
+			return dadesDecodificades;
 		}
 	}
 }
 function mostrarMissatges(resultat){
-	if(resultat == true){
+	if(resultat == "true"){
 		click_botoCancelarTasca();
 		//Mostra el missatge de "Insertat correctament".
 		document.getElementById('emergentMissatgeDadesCorrectes').style.display="block";
-		alert('iihglhukji');
 	}else{
 		click_botoCancelarTasca();
 		//Mostra un missatge de "No s'ha pogut inserir".
@@ -92,4 +93,23 @@ function mostrarMissatges(resultat){
 function pintarCelaDiaActual(idCela){
 	console.log(idCela);
 	document.getElementById(idCela).style.backgroundColor = "#D0FA58";
+}
+
+function metode_veureTasques(dia,mes,any,usuari){
+	var dadesTasca = new Array();
+	
+	dadesTasca = {
+		"dia": dia,
+		"mes": mes,
+		"any": any,
+		"usuari": usuari,
+		"accio": "veureTasques"
+	};
+	var dadesTascaStringJSON = JSON.stringify(dadesTasca);
+	var resultat = enviarDadesServidor(dadesTascaStringJSON,"afegirTascaCalendari.php");
+	//Acció que es farà amb les dades rebudes "resultat".
+}
+function tancaremergentMissatgeDadesCorrectes(){
+	click_botoCancelarTasca();
+	document.getElementById('emergentMissatgeDadesCorrectes').style.display="none";
 }
