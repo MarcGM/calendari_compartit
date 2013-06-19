@@ -1,5 +1,5 @@
 <?php
-include_once 'declaracio_clases.php';
+include_once '/htdocs/public/www/cirvianum/mGrandio/controllers/declaracio_clases.php';
 
 //error_reporting(0);
 
@@ -7,7 +7,7 @@ class Autenticacio
 {			
 	public function consultarUsuariIContrasenya($usuariComprovar, $contrasenyaComprovar)
 	{
-		$novaConexio = new ConexioBD("127.0.0.1","uf3_pt2","usuari","contrasenya");
+		$novaConexio = new ConexioBD("hostingmysql255.nominalia.com","basvalley_com_cirvianum","MMC165_cirvianum","Cirvianum_1");
 			
 		$usuariLogin = $_POST['inputName_formLogin'];
 		$contrasenyaLogin = $_POST['inputPassword_formLogin'];

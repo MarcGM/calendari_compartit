@@ -1,5 +1,5 @@
 <?php
-	include_once '../declaracio_clases.php';
+	include_once '/htdocs/public/www/cirvianum/mGrandio/controllers/declaracio_clases.php';
 	//error_reporting(0);
 
 
@@ -8,7 +8,7 @@
 	
 	if($arrayDades['accio'] == "inserirDadesBD"){
 		$dataConvertidaIJunta = convertirADate($arrayDades['diaTasca'],$arrayDades['mesTasca'],$arrayDades['anyTasca'],$arrayDades['hora'],$arrayDades['minut']);
-		$conexio = new ConexioBD("127.0.0.1","uf3_pt2","usuari","contrasenya");
+		$conexio = new ConexioBD("hostingmysql255.nominalia.com","basvalley_com_cirvianum","MMC165_cirvianum","Cirvianum_1");
 		$conexio->obrirConnexio();
 		$connexio = $conexio->connexio;
 		$ambExit = afegirTasca($connexio,$arrayDades['nom_tasca'],$arrayDades['descripcio'],$arrayDades['compartir'],$dataConvertidaIJunta,$arrayDades['usuariTasca']);
@@ -44,7 +44,7 @@
 		return $insertTasca;
 	}
 	function veureTasques($dataInici,$dataFi,$usuari){
-		$conexio = new ConexioBD("127.0.0.1","uf3_pt2","usuari","contrasenya");
+		$conexio = new ConexioBD("hostingmysql255.nominalia.com","basvalley_com_cirvianum","MMC165_cirvianum","Cirvianum_1");
 		$conexio->obrirConnexio();
 		$connexio = $conexio->connexio;
 		$consultaUsuari = mysqli_query($connexio,"SELECT * FROM tasques WHERE dataTasca >= '".$dataInici."' && dataTasca <= '".$dataFi."' && (compartida = 1 OR idUsuari = '".$usuari."')")

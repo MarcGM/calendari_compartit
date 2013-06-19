@@ -11,7 +11,7 @@ session_start();
 		
 		<link rel="StyleSheet" href="media/estils/estils_pIndex.css" type="text/css">
 		<?php 
-		include_once 'controllers/declaracio_clases.php';
+		include_once '/htdocs/public/www/cirvianum/mGrandio/controllers/declaracio_clases.php';
 		
 		//error_reporting(0);
 		?>

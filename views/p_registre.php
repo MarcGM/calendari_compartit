@@ -12,7 +12,7 @@ session_start();
 		<title>Calendari compartit - Registre</title>
 		
 		<?php 
-		include_once '../declaracio_clases.php';
+		include_once '/htdocs/public/www/cirvianum/mGrandio/controllers/declaracio_clases.php';
 		
 		//error_reporting(0);
 		?>
@@ -38,7 +38,7 @@ session_start();
 		<div id="div_tornarPagPrin"><a href="p_prin.php">Tornar a la pàgina de login</a></div>
 		<?php 
 		}else{
-			$novaConexio = new ConexioBD("127.0.0.1","uf3_pt2","usuari","contrasenya");
+			$novaConexio = new ConexioBD("hostingmysql255.nominalia.com","basvalley_com_cirvianum","MMC165_cirvianum","Cirvianum_1");
 			$novaConexio->obrirConnexio();
 			
 			$usuariRegistre = $_POST['inputName_formLogin'];
@@ -50,7 +50,7 @@ session_start();
 			$novaConexio->tancarConnexio();
 			if($registreUsuari){
 				echo "Registrat correctament";
-				echo '<meta http-equiv="Refresh" content="1; URL=p_prin.php"/>';
+				echo '<meta http-equiv="Refresh" content="1; URL=../views/p_prin.php"/>';
 			}else{
 				echo "Ha fallat la consulta de registre: ".mysql_error();
 			}

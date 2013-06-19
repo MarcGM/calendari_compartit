@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	include_once '../declaracio_clases.php';
+	include_once '/htdocs/public/www/cirvianum/mGrandio/controllers/declaracio_clases.php';
 	
 	$calend_1 = new Calendari();
 	

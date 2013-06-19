@@ -1,5 +1,5 @@
 <?php
-include_once '../controllers/declaracio_clases.php';
+include_once '/htdocs/public/www/cirvianum/mGrandio/controllers/declaracio_clases.php';
 
 //error_reporting(0);
 
@@ -163,7 +163,7 @@ class Calendari
 	}
 	public function consultarNumeroTasques($dataInici,$dataFi,$idUsuari)
 	{
-		$novaConexio = new ConexioBD("127.0.0.1","uf3_pt2","usuari","contrasenya");
+		$novaConexio = new ConexioBD("hostingmysql255.nominalia.com","basvalley_com_cirvianum","MMC165_cirvianum","Cirvianum_1");
 		$novaConexio->obrirConnexio();
 		$consultaUsuari = mysqli_query($novaConexio->connexio,"SELECT * FROM tasques WHERE dataTasca >= '".$dataInici."' AND dataTasca <= '".$dataFi."' AND (idUsuari = '".$idUsuari."' OR compartida = 1)")
 			or die("Ha fallat la consulta: ".mysql_error());

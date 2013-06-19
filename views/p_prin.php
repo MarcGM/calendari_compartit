@@ -17,7 +17,7 @@ session_start();
 		<title>Calendari compartit - Pàgina principal</title>
 		<script type="text/javascript" src="../scripts/scripts.js"></script>
 		<?php
-		include_once '../controllers/declaracio_clases.php';
+		include_once '/htdocs/public/www/cirvianum/mGrandio/controllers/declaracio_clases.php';
 		
 		//error_reporting(0);
 		?>
@@ -177,7 +177,7 @@ session_start();
 	</body>
 	<?php
 	}else{
-		echo '<meta http-equiv="Refresh" content="0; URL=index.php"/>';
+		echo '<meta http-equiv="Refresh" content="0; URL=../index.php"/>';
 	}
 	?>
 </html>

@@ -1,5 +1,5 @@
 <?php
-include_once '../controllers/declaracio_clases.php';
+include_once '/htdocs/public/www/cirvianum/mGrandio/controllers/declaracio_clases.php';
 
 //error_reporting(0);
 
