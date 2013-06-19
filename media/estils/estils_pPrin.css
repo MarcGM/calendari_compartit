@@ -1,24 +1,4 @@
 /*
- * ESTILS DE LA PÀGINA "index.php".
- */
-
-#div_formLogin{
-	border-color: #000000;
-	border-width: 3px;
-	border-style: solid;
-	border-radius: 3px;
-	width: 320px;
-	height: 175px;
-	font-size: 18px;
-	font-family:"Times New Roman";
-	text-align:center;
-	padding-top:20px;
-	padding-bottom:20px;
-	margin: auto;
-	margin-top: 10%;
-}
-
-/*
  * ESTILS DE LA PÀGINA "p_prin.php".
  */
 
@@ -150,22 +130,6 @@ html, body{
 	height: 160px;
 	padding-left: 28px;
 }
-#div_formLogin{
-	border-color: #000000;
-	border-width: 3px;
-	border-style: solid;
-	border-radius: 3px;
-	width: 320px;
-	height: 175px;
-	font-size: 18px;
-	font-family:"Times New Roman";
-	text-align:center;
-	padding-top:20px;
-	padding-bottom:20px;
-	margin: auto;
-	margin-top: 10%;
-	background-color:#FACC2E;
-}
 #botonsAccions{
 	margin-top: 18px;
 }
@@ -274,23 +238,4 @@ html, body{
 	border-width: 2px;
 	border-radius: 2px;
 	cursor:pointer;
-}
-#enllacPagRegistre{
-	background-color: #E2551C;
-	font-family:"Times New Roman";
-	font-size: 18px;
-	cursor: pointer;
-	box-shadow: 0 10px 6px -6px #777;
-	-webkit-box-shadow: 0 10px 6px -6px;
-	border-color: #E2551C;
-	margin-top: -15px;
-	border-radius: 2px;
-}
-#botoLogin{
-	background-color: #E2551C;
-	font-family:"Times New Roman";
-	font-size: 16px;
-	cursor: pointer;
-	border-color: #E2551C;
-	border-radius: 3px;
 }

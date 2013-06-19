@@ -12,9 +12,10 @@ session_start();
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		
-		<link rel="StyleSheet" href="estils.css" type="text/css">
+		<link rel="StyleSheet" href="media/estils/estils_pPrin.css" type="text/css">
 		
-		<script type="text/javascript" src="scripts.js"></script>
+		<title>Calendari compartit - Pàgina principal</title>
+		<script type="text/javascript" src="scripts/scripts.js"></script>
 		<?php
 		include_once 'declaracio_clases.php';
 		

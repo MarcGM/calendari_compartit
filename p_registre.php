@@ -7,9 +7,9 @@ session_start();
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<link rel="StyleSheet" href="estils__p_registre.css" type="text/css">
+		<link rel="StyleSheet" href="/media/estils/estils_pRegistre.css" type="text/css">
 		
-		<title>Trivial - Registre</title>
+		<title>Calendari compartit - Registre</title>
 		
 		<?php 
 		include_once 'declaracio_clases.php';
@@ -31,11 +31,11 @@ session_start();
 				Cognom: <input type="text" id="inputCognom_formLogin" name="inputCognom_formLogin" required="required" />
 				<br />
 				<br /><br />
-				<input type="submit" value="Registrar" />
+				<input id="botoRegistre" type="submit" value="Registrar" />
 			</form>
 			<br /><br />
 		</div>
-		<div id="div_tornarPagPrin"><a href="p_prin.php">TORNAR A LA PÀGINA DE LOGIN</a></div>
+		<div id="div_tornarPagPrin"><a href="p_prin.php">Tornar a la pàgina de login</a></div>
 		<?php 
 		}else{
 			$novaConexio = new ConexioBD("127.0.0.1","uf3_pt2","usuari","contrasenya");
@@ -50,7 +50,7 @@ session_start();
 			$novaConexio->tancarConnexio();
 			if($registreUsuari){
 				echo "Registrat correctament";
-				echo '<meta http-equiv="Refresh" content="3; URL=p_prin.php"/>';
+				echo '<meta http-equiv="Refresh" content="1; URL=p_prin.php"/>';
 			}else{
 				echo "Ha fallat la consulta de registre: ".mysql_error();
 			}

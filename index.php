@@ -9,7 +9,7 @@ session_start();
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>Calendari compartit - Login</title>
 		
-		<link rel="StyleSheet" href="estils.css" type="text/css">
+		<link rel="StyleSheet" href="media/estils/estils_pIndex.css" type="text/css">
 		<?php 
 		include_once 'declaracio_clases.php';
 		
@@ -43,7 +43,7 @@ session_start();
 					$_SESSION['acabatDeLoguejar'] = true;
 					echo '<meta http-equiv="Refresh" content="0; URL=p_prin.php"/>';
 				}else{
-					echo "L'usuari o la contrasenya no existeixen!";
+					echo '<meta http-equiv="Refresh" content="0; URL=index.php"/>';
 				}
 			}
 		}else{
