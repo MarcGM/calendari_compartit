@@ -1,0 +1,10 @@
+---Aclaracions---
+
+
+-He ficat cada clase en un arxiu diferent perquè es recomana fer-ho així i no totes en un mteix arxiu.
+	Vaig estar buscant informació sobre el tema i tot arreu deien lo mateix (que fiqui cada classe en un arxiu).
+	També recomenaben fer un include de cada arxiu necesari en un sol arxiu (en el meu cas "declaracio_clases.php" a la carpeta "controllers").
+
+-Als includes he possat la ruta absoluta i no la relativa perquè si ficaba la relativa, com que un mateix arxiu php es podia executar de diferents llocs,
+	no la trobaba en diferents ocasions.
+	Vaig estar fent la prova amb això i buscant informació a foros i altres llocs de Internet.
