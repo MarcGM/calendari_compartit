@@ -9,6 +9,7 @@
 var diaAfegirTasca = null;
 var anyAfegirTasca = null;
 
+//Funció que fà apareixer el requadre per a afegir tasques.
 function metode_afegirTasca(dia,mes,any){
 	document.getElementById('titol_RequadreAfegirTasca').innerHTML+="<h2>"+dia+" de "+mes+" del "+any+"</h2>";
 	document.getElementById('divRequadreAfegirTasca').style.display="block";
@@ -16,7 +17,7 @@ function metode_afegirTasca(dia,mes,any){
 	diaAfegirTasca = dia;
 	anyAfegirTasca = any;
 }
-
+//Funció que fà desapareixer el recuadre per afegir tasques i reinicialitza tots els camps del formulari si han estat modificats.
 function click_botoCancelarTasca(){
 	document.getElementById('divRequadreAfegirTasca').style.display = "none";
 	document.getElementById('titol_RequadreAfegirTasca').innerHTML = "";
@@ -26,6 +27,7 @@ function click_botoCancelarTasca(){
 	document.getElementById('textArea_Descripcio').value = "";
 	document.getElementById('inputCheckbox_compartirEvent').checked = 0;
 }
+//Comprova si el camp requerit (el nom) està complert.
 function click_botoCrearTasca(nomTasca,select_hores,select_minuts,textArea_Descripcio,Checkbox_compartirEvent,mesAfegirTasca,usuariLoguejat){
 	//Comprovar si els camps requerits estan omplerts.
 	if(document.getElementById('input_nomTasca').value == null){
@@ -34,6 +36,7 @@ function click_botoCrearTasca(nomTasca,select_hores,select_minuts,textArea_Descr
 		inserirDadesBD(nomTasca,select_hores,select_minuts,textArea_Descripcio,Checkbox_compartirEvent,diaAfegirTasca,mesAfegirTasca,anyAfegirTasca,usuariLoguejat);
 	}
 }
+//Funció que rep les dades del formulari i les codifica en format JSON. També rep el resulta un cop fet to el procés.
 function inserirDadesBD(nomTasca,select_hores,select_minuts,textArea_Descripcio,Checkbox_compartirEvent,diaAfegirTasca,mesAfegirTasca,anyAfegirTasca,usuariAfegirTasca){
 	
 	var dadesTasca = new Array();
@@ -53,11 +56,13 @@ function inserirDadesBD(nomTasca,select_hores,select_minuts,textArea_Descripcio,
 		"accio": "inserirDadesBD"
 	};
 	var dadesTascaStringJSON = JSON.stringify(dadesTasca);
+	//S'envien les dades en format JSON a aquesta funció que és l'encaregada de fer l'enviament.
 	dadesDecodificades = enviarDadesServidor(dadesTascaStringJSON,"../controllers/afegirTascaCalendari.php");;
 	//Agafa la posició associativa "resultat" del array associatiu.
 	resultat = dadesDecodificades["resultat"];
 	mostrarMissatges(resultat);
 }
+//És la funció encaregad de enviar les dades al servidor mitjançant AJAX i després de rebre el resultat.
 function enviarDadesServidor(campsTascaJSON,arxiu){
 	var xmlHttp;
 	var dadesRebudes;
@@ -80,6 +85,7 @@ function enviarDadesServidor(campsTascaJSON,arxiu){
 
 	return dadesDecodificades;
 }
+//Funció que mostra un missatge al usuri segons si s'han inserit corectament o no, les dades.
 function mostrarMissatges(resultat){
 	if(resultat == true){
 		click_botoCancelarTasca();
@@ -92,13 +98,13 @@ function mostrarMissatges(resultat){
 		document.getElementById('emergentMissatgeDades').style.display = "block";
 	}
 }
+//Funció encarregada de marcar la cel·la coresponent al dia actual.
 function pintarCelaDiaActual(idCela){
 	document.getElementById(idCela).style.backgroundColor = "#D0FA58";
 }
-
+//Funció encarregad de enviar i rebre informació sobre les tasques que hi ha a cada dia.
 function metode_veureTasques(dia,mes,any,usuari){
-	//var dadesTasca = new Array();
-	
+
 	dadesTasca = {
 		"dia": dia,
 		"mes": mes,
@@ -112,6 +118,7 @@ function metode_veureTasques(dia,mes,any,usuari){
 	
 	crearTaulaTasques(resultat,dia,mes,any);
 }
+//Funció encaregada de crear la taula de les tasques a un "div" del document html.
 function crearTaulaTasques(dadesJSON,dia,mes,any){
 	var htmlDadesJSON = "";
 	//Aquesta variable guarda la mida del array que conté els objectes amb les dades.
@@ -148,13 +155,16 @@ function crearTaulaTasques(dadesJSON,dia,mes,any){
 	document.getElementById('emergentInfoTasques').innerHTML = htmlDadesJSON;
 	document.getElementById('emergentInfoTasques').style.display = "block";
 }
+//Funció encarregada de tancar el emrgent que mostra el missatge dient que s'han inserit correctament o no, les dades.
 function tancaremergentMissatgeDades(){
 	click_botoCancelarTasca();
 	document.getElementById('emergentMissatgeDades').style.display="none";
 }
+//Funció encarregada de tancar el emergent on es veuen les tasques de un dia en concret.
 function tancarEmergentVeureTasques(){
 	document.getElementById('emergentInfoTasques').style.display="none";
 }
+//Funció encarregad de marcar una tasca com a realitzada.
 function marcarTascaRealitzada(idTascaAMarcar){
 	document.getElementById(idTascaAMarcar).checked = true;
 	document.getElementById(idTascaAMarcar).disabled = true;

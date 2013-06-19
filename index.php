@@ -13,7 +13,12 @@ session_start();
 		<?php 
 		include_once '/htdocs/public/www/cirvianum/mGrandio/controllers/declaracio_clases.php';
 		
-		//error_reporting(0);
+		error_reporting(0);
+		
+		/*
+		 * Aquesta és la pàgina de login.
+		 */
+		
 		?>
 	</head>
 	<body>
