@@ -1,7 +1,7 @@
 <?php
 include_once 'declaracio_clases.php';
 
-error_reporting(0);
+//error_reporting(0);
 
 class Calendari
 {	
@@ -147,11 +147,11 @@ class Calendari
 		
 		return $anyActualNum['year'];
 	}
-	public function getNumeroTasquesCasellaActual($dia,$mes,$any)
+	public function getNumeroTasquesCasellaActual($dia,$mes,$any,$idUsuari)
 	{
 		$dataIniciConvertidaIJunta = $this->convertirADate($dia,$mes,$any,0,0);
 		$dataFiConvertidaIJunta = $this->convertirADate($dia,$mes,$any,23,59);
-		$numeroTasques = $this->consultarNumeroTasques($dataIniciConvertidaIJunta,$dataFiConvertidaIJunta);
+		$numeroTasques = $this->consultarNumeroTasques($dataIniciConvertidaIJunta,$dataFiConvertidaIJunta,$idUsuari);
 		
 		return $numeroTasques;
 	}
@@ -161,11 +161,11 @@ class Calendari
 		
 		return $cadenaPerInserirMySQL;
 	}
-	public function consultarNumeroTasques($dataInici,$dataFi)
+	public function consultarNumeroTasques($dataInici,$dataFi,$idUsuari)
 	{
 		$novaConexio = new ConexioBD("127.0.0.1","uf3_pt2","usuari","contrasenya");
 		$novaConexio->obrirConnexio();
-		$consultaUsuari = mysqli_query($novaConexio->connexio,"SELECT * FROM tasques WHERE dataTasca >= '".$dataInici."' && dataTasca <= '".$dataFi."'")
+		$consultaUsuari = mysqli_query($novaConexio->connexio,"SELECT * FROM tasques WHERE dataTasca >= '".$dataInici."' AND dataTasca <= '".$dataFi."' AND (idUsuari = '".$idUsuari."' OR compartida = 1)")
 			or die("Ha fallat la consulta: ".mysql_error());
 		$novaConexio->tancarConnexio();
 		$numeroRegistres = mysqli_num_rows($consultaUsuari);

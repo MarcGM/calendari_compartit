@@ -18,7 +18,7 @@ session_start();
 		<?php
 		include_once 'declaracio_clases.php';
 		
-		error_reporting(0);
+		//error_reporting(0);
 		?>
 		<title>UF3_Pt1_ex5</title>
 	</head>
@@ -34,6 +34,7 @@ session_start();
 	?>
 	<body>
 		<div id="link_anarMesActual"> <a href="p_anarMesActual.php">ANAR AL MES I ANY ACTUALS</a> </div>
+		<div id="div_nomUsuari"><?php echo $_SESSION['idUsuariLoguejat'] ?></div>
 		<div id="link_tancarSessio"> (<a href="p_tancarSessio.php">TANCAR SESSIÓ</a>) </div>
 		
 		<div id="fletxaMesAnterior">
@@ -100,12 +101,12 @@ session_start();
 					</div>
 				</div>
 			</div>
-				
-			<div id="emergentMissatgeDadesCorrectes">
-				<div id="titolEmergentMissatgeDadesCorrectes">Les dades s'han inserit correctament a la base de dades!</div>
-				<div id="iconeEmergentMissatgeDadesCorrectes"> </div>
-				<div id="iconeTancaremergentMissatgeDadesCorrectes" onclick="tancaremergentMissatgeDadesCorrectes();">X</div>
+			<div id="emergentMissatgeDades">
+				<div id="titolEmergentMissatgeDades">Les dades s'han inserit correctament a la base de dades!</div>
+				<div id="iconeEmergentMissatgeDades"> </div>
+				<div id="iconeTancaremergentMissatgeDades" onclick="tancaremergentMissatgeDades();">X</div>
 			</div>
+			<div id="emergentInfoTasques"> </div>
 			
 			<table id="table_Mes">
 				<tr id="titols_dies_setmana">
@@ -156,7 +157,7 @@ session_start();
 								$mesCasellaActualMesNom = $calend_1->getMesVisibleNom();
 								$usuariLogejat = $_SESSION['idUsuariLoguejat'];
 								
-								$numeroTasquesCasellaActual = $calend_1->getNumeroTasquesCasellaActual($diaCasellaActualMes,$_SESSION['mesVisible'],$anyCasellesActualMes);
+								$numeroTasquesCasellaActual = $calend_1->getNumeroTasquesCasellaActual($diaCasellaActualMes,$_SESSION['mesVisible'],$anyCasellesActualMes,$_SESSION['idUsuariLoguejat']);
 								echo '<div class="divNumeroTasques" onclick="metode_veureTasques('.$diaCasellaActualMes.', \''.$_SESSION['mesVisible'].'\', '.$anyCasellesActualMes.', \''.$usuariLogejat.'\')"><u>'.$numeroTasquesCasellaActual.'</u> tasca/ques</div>';
 								echo '<div class="divAfegirTasca" onclick="metode_afegirTasca('.$diaCasellaActualMes.', \''.$mesCasellaActualMesNom.'\', '.$anyCasellesActualMes.')">+</div>';
 							}
