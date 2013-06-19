@@ -4,7 +4,7 @@ session_start();
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" style="background-image: url('media/img/calendariPortada.jpg')">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>Calendari compartit - Login</title>
@@ -13,7 +13,7 @@ session_start();
 		<?php 
 		include_once 'declaracio_clases.php';
 		
-		error_reporting(0);
+		//error_reporting(0);
 		?>
 	</head>
 	<body>
@@ -26,10 +26,10 @@ session_start();
 					<br /><br />
 					Contrasenya: <input type="password" id="inputPassword_formLogin" name="inputPassword_formLogin" />
 					<br /><br />
-					<input type="submit" value="Entrar" />
+					<input id= "botoLogin" type="submit" value="Entrar" />
 				</form>
 				<br /><br />
-				<a href="p_registre.php">Registrar-te</a>
+				<button id="enllacPagRegistre" onclick="window.location.href='p_registre.php'">Registrar-te</button>
 			</div>
 			<?php
 			}else{

@@ -34,7 +34,7 @@ function inserirDadesBD(nomTasca,select_hores,select_minuts,textArea_Descripcio,
 	
 	var dadesTasca = new Array();
 	var dadesDecodificades = new Array();
-	var resultat = new Array();
+	var resultat;
 	
 	dadesTasca = {
 		"nom_tasca": nomTasca,
@@ -49,49 +49,46 @@ function inserirDadesBD(nomTasca,select_hores,select_minuts,textArea_Descripcio,
 		"accio": "inserirDadesBD"
 	};
 	var dadesTascaStringJSON = JSON.stringify(dadesTasca);
-	dadesDecodificades = enviarDadesServidor(dadesTascaStringJSON,"afegirTascaCalendari.php");
-	console.log(dadesDecodificades);
+	dadesDecodificades = enviarDadesServidor(dadesTascaStringJSON,"afegirTascaCalendari.php");;
 	//Agafa la posició associativa "resultat" del array associatiu.
-	//resultat = dadesDecodificades['resultat'];
-	//console.log(resultat);
-	mostrarMissatges("true");
+	resultat = dadesDecodificades["resultat"];
+	mostrarMissatges(resultat);
 }
 function enviarDadesServidor(campsTascaJSON,arxiu){
+	var xmlHttp;
 	var dadesRebudes;
-	var dadesDecodificades;
+	var dadesDecodificades = new Array();
 	
 	xmlHttp = new XMLHttpRequest();
 	
+	xmlHttp.onreadystatechange = function()
+	{
+		if(xmlHttp.readyState === 4 && xmlHttp.status === 200){
+			//Reb la informació (en aquest cas en format JSON).
+			dadesRebudes = xmlHttp.responseText;
+			//Transforma el string JSON en un array de Javascript.
+			dadesDecodificades = JSON.parse(dadesRebudes);
+		}
+	}
 	xmlHttp.open("POST",arxiu,false);
 	xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 	xmlHttp.send("dadesTasca="+campsTascaJSON);
-	
-	xmlHttp.onreadystatechange = function()
-	{
-		if(xmlHttp.readyState===4 && xmlHttp.status===200){	
-			//Reb la informació (en aquest cas en format JSON).
-			dadesRebudes = xmlHttp.responseText;
-			console.log(dadesRebudes);
-			//Transforma el string JSON en un array de Javascript.
-			//dadesDecodificades = JSON.parse(dadesRebudes);
-			console.log(dadesDecodificades);
-			return dadesDecodificades;
-		}
-	}
+
+	return dadesDecodificades;
 }
 function mostrarMissatges(resultat){
-	if(resultat == "true"){
+	if(resultat == true){
 		click_botoCancelarTasca();
 		//Mostra el missatge de "Insertat correctament".
-		document.getElementById('emergentMissatgeDadesCorrectes').style.display="block";
+		document.getElementById('titolEmergentMissatgeDades').innerHTML = "Les dades s'han inserit correctament a la base de dades!";
+		document.getElementById('emergentMissatgeDades').style.display = "block";
 	}else{
 		click_botoCancelarTasca();
-		//Mostra un missatge de "No s'ha pogut inserir".
-		
+		document.getElementById('titolEmergentMissatgeDades').innerHTML = "ERROR en inserir les dades (les dades no s'han inserit corectament).<br /> Comunique-ho al administrador.";
+		document.getElementById('emergentMissatgeDades').style.display = "block";
 	}
 }
 function pintarCelaDiaActual(idCela){
-	console.log(idCela);
 	document.getElementById(idCela).style.backgroundColor = "#D0FA58";
 }
 
@@ -105,16 +102,56 @@ function metode_veureTasques(dia,mes,any,usuari){
 		"usuari": usuari,
 		"accio": "veureTasques"
 	};
-	console.log("hjbkl");
 	var dadesTascaStringJSON = JSON.stringify(dadesTasca);
-	console.log(dadesTascaStringJSON);
-	console.log("dadesTascaStringJSON");
+	//Un cop retornades les dades des de la funció "enviarDadesServidor()", la variable "resultat" conté un array on a cada posició hi ha un objecte (que fà referència a cadascuna de les files dretornades de la consulta SQL).
 	var resultat = enviarDadesServidor(dadesTascaStringJSON,"afegirTascaCalendari.php");
-	console.log("resultat");
-	//Acció que es farà amb les dades rebudes "resultat".
-	console.log(resultat);
+	
+	crearTaulaTasques(resultat,dia,mes,any);
 }
-function tancaremergentMissatgeDadesCorrectes(){
+function crearTaulaTasques(dadesJSON,dia,mes,any){
+	var htmlDadesJSON = "";
+	//Aquesta variable guarda la mida del array que conté els objectes amb les dades.
+	var numeroFilesArray = dadesJSON.length;
+
+	htmlDadesJSON += '<table id="taula_dadesTasca" name="taula_dadesTasca">';
+	htmlDadesJSON += '<tr><th id="titolTaulaTasques" colspan="3">TASQUES '+dia+'-'+mes+'-'+any+'<div id="botoTancarVeureTasques" onclick="tancarEmergentVeureTasques()">X</div></th></tr>';
+	htmlDadesJSON += '<tr><th id="capcelera_nomTasca">Nom Tasca</th> <th id="capcelera_horaTasca">Hora</th> <th id="capcelera_realitzada">Realitzada?</th>';
+	for(var cont=0; cont<numeroFilesArray; cont++){
+		var idTasca = dadesJSON[cont].idTasca;
+		var nomTasca = dadesJSON[cont].nomTasca;
+		var tascaRealitzada = dadesJSON[cont].realitzada;
+		var dataTasca = dadesJSON[cont].dataTasca;
+		var dataTasca_hora = dataTasca.substring(11,16);
+		var marcat = "";
+		var bloquejat = "";
+		
+		if(tascaRealitzada == 1){
+			marcat = "checked";
+			bloquejat = "disabled";
+			
+		}
+		
+		htmlDadesJSON += '<tr>'
+		
+		htmlDadesJSON += '<td id="tdNomTasca_'+idTasca+'">'+nomTasca+'</td>';
+		htmlDadesJSON += '<td id="tdDataTasca_'+idTasca+'">'+dataTasca_hora+'</td>';
+		htmlDadesJSON += '<td id="tdRealitzada_'+idTasca+'"><input type="checkbox" id="checkbox_'+idTasca+'" onclick="marcarTascaRealitzada(this.id)" '+marcat+' '+bloquejat+' /></td>';
+		
+		htmlDadesJSON += '</tr>';
+	}
+	htmlDadesJSON += '</table>';
+	
+	document.getElementById('emergentInfoTasques').innerHTML = htmlDadesJSON;
+	document.getElementById('emergentInfoTasques').style.display = "block";
+}
+function tancaremergentMissatgeDades(){
 	click_botoCancelarTasca();
-	document.getElementById('emergentMissatgeDadesCorrectes').style.display="none";
+	document.getElementById('emergentMissatgeDades').style.display="none";
+}
+function tancarEmergentVeureTasques(){
+	document.getElementById('emergentInfoTasques').style.display="none";
+}
+function marcarTascaRealitzada(idTascaAMarcar){
+	document.getElementById(idTascaAMarcar).checked = true;
+	document.getElementById(idTascaAMarcar).disabled = true;
 }
