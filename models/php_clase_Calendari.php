@@ -1,7 +1,13 @@
 <?php
 include_once '/htdocs/public/www/cirvianum/mGrandio/controllers/declaracio_clases.php';
 
-//error_reporting(0);
+error_reporting(0);
+
+/*
+ * Aquesta classe s'encarrega de les tasques del calendari:
+ * -Crea un objecte calendari.
+ * etc.
+*/
 
 class Calendari
 {	
@@ -43,7 +49,7 @@ class Calendari
 		$this->dia_1_possat = false;
 		$this->dia_1_diumenje_possat = false;
 	}
-	
+	//-Cañcular els dies de febrer (segons sigui un any de traspàs o no).
 	public function calcularDiesFebrer($any)
 	{
 		if($any % 4 == 0){
@@ -52,10 +58,7 @@ class Calendari
 			return 28;
 		}
 	}
-	
-	/*
-	 * Aquest mètode encara no s'ha implementat (2-4-2013):
-	 */
+	//Calcula a quina casela va cada número del més.
 	public function cambiarIdNumDies()
 	{
 		if($this->contIdsnumDies != 0 && $this->contIdsnumDies <= $this->diesMesos[$this->mesNum]){
@@ -67,7 +70,7 @@ class Calendari
 			return "";
 		}
 	}
-	
+	//Calcula on va el primer dia del mes. (a quina casella).
 	public function comprovarNum1($cont_caselles)
 	{
 		if($this->dia_1_possat == false){
@@ -103,6 +106,10 @@ class Calendari
 		}
 	}
 	
+	/*
+	 * GETTERS:
+	 */
+	 
 	public function getDiaSetmanaNum($diaNum,$mesNum,$any)
 	{
 		$numAData = date("w", mktime(0, 0, 0, $mesNum, $diaNum, $any));
@@ -155,12 +162,14 @@ class Calendari
 		
 		return $numeroTasques;
 	}
+	//Funció que converteix una data donada de forma separada a una dat en format SQL.
 	public function convertirADate($diaTasca,$mesTasca,$anyTasca,$horaTasca,$minutTasca)
 	{
 		$cadenaPerInserirMySQL = date("Y-m-d H:i:s", mktime((int)$horaTasca,(int)$minutTasca,0,(int)$mesTasca,(int)$diaTasca,(int)$anyTasca));
 		
 		return $cadenaPerInserirMySQL;
 	}
+	//Funció que calcula el número de tasques de cada dia del mes.
 	public function consultarNumeroTasques($dataInici,$dataFi,$idUsuari)
 	{
 		$novaConexio = new ConexioBD("hostingmysql255.nominalia.com","basvalley_com_cirvianum","MMC165_cirvianum","Cirvianum_1");

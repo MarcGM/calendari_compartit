@@ -2,6 +2,10 @@
  * @author Marc Grandio
  */
 
+/*
+ * Arxiu que conté tot el codi Javscript de la aplicació web.
+ */
+
 var diaAfegirTasca = null;
 var anyAfegirTasca = null;
 

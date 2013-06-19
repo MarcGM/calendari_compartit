@@ -2,6 +2,10 @@
 	session_start();
 	include_once '/htdocs/public/www/cirvianum/mGrandio/controllers/declaracio_clases.php';
 	
+	/*
+	 * Aquest arxiu és l'encarregat de passar al mes anterior. He fet un arxiu a part per utilitzar el mínim de Javascript possible i fer més amb php.
+	 */
+	
 	$calend_1 = new Calendari();
 	
 	if($_SESSION['mesVisible'] == 1){

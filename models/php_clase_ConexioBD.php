@@ -1,8 +1,9 @@
 <?php
 include_once '/htdocs/public/www/cirvianum/mGrandio/controllers/declaracio_clases.php';
 
-//error_reporting(0);
+error_reporting(0);
 
+//Classe encarregada de fer les connexions, tancar-les i obrir-les.
 class ConexioBD
 {
 	public $servidor;
