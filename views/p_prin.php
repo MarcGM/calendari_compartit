@@ -12,12 +12,12 @@ session_start();
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		
-		<link rel="StyleSheet" href="media/estils/estils_pPrin.css" type="text/css">
+		<link rel="StyleSheet" href="../media/estils/estils_pPrin.css" type="text/css">
 		
 		<title>Calendari compartit - Pàgina principal</title>
-		<script type="text/javascript" src="scripts/scripts.js"></script>
+		<script type="text/javascript" src="../scripts/scripts.js"></script>
 		<?php
-		include_once 'declaracio_clases.php';
+		include_once '../controllers/declaracio_clases.php';
 		
 		//error_reporting(0);
 		?>
@@ -34,15 +34,15 @@ session_start();
 		}
 	?>
 	<body>
-		<div id="link_anarMesActual"> <a href="p_anarMesActual.php">ANAR AL MES I ANY ACTUALS</a> </div>
+		<div id="link_anarMesActual"> <a href="../controllers/p_anarMesActual.php">ANAR AL MES I ANY ACTUALS</a> </div>
 		<div id="div_nomUsuari"><?php echo $_SESSION['idUsuariLoguejat'] ?></div>
-		<div id="link_tancarSessio"> (<a href="p_tancarSessio.php">TANCAR SESSIÓ</a>) </div>
+		<div id="link_tancarSessio"> (<a href="../controllers/p_tancarSessio.php">TANCAR SESSIÓ</a>) </div>
 		
 		<div id="fletxaMesAnterior">
-			<a href="anarMesAnterior.php"> <<< </a>
+			<a href="../controllers/anarMesAnterior.php"> <<< </a>
 		</div>
 		<div id="fletxaMesSeguent">
-			<a href="anarMesSeguent.php"> >>> </a>
+			<a href="../controllers/anarMesSeguent.php"> >>> </a>
 		</div>
 		
 		<div id="div_taulaMes">

@@ -7,12 +7,12 @@ session_start();
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<link rel="StyleSheet" href="/media/estils/estils_pRegistre.css" type="text/css">
+		<link rel="StyleSheet" href="../media/estils/estils_pRegistre.css" type="text/css">
 		
 		<title>Calendari compartit - Registre</title>
 		
 		<?php 
-		include_once 'declaracio_clases.php';
+		include_once '../declaracio_clases.php';
 		
 		//error_reporting(0);
 		?>

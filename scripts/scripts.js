@@ -49,7 +49,7 @@ function inserirDadesBD(nomTasca,select_hores,select_minuts,textArea_Descripcio,
 		"accio": "inserirDadesBD"
 	};
 	var dadesTascaStringJSON = JSON.stringify(dadesTasca);
-	dadesDecodificades = enviarDadesServidor(dadesTascaStringJSON,"afegirTascaCalendari.php");;
+	dadesDecodificades = enviarDadesServidor(dadesTascaStringJSON,"../controllers/afegirTascaCalendari.php");;
 	//Agafa la posició associativa "resultat" del array associatiu.
 	resultat = dadesDecodificades["resultat"];
 	mostrarMissatges(resultat);
@@ -104,7 +104,7 @@ function metode_veureTasques(dia,mes,any,usuari){
 	};
 	var dadesTascaStringJSON = JSON.stringify(dadesTasca);
 	//Un cop retornades les dades des de la funció "enviarDadesServidor()", la variable "resultat" conté un array on a cada posició hi ha un objecte (que fà referència a cadascuna de les files dretornades de la consulta SQL).
-	var resultat = enviarDadesServidor(dadesTascaStringJSON,"afegirTascaCalendari.php");
+	var resultat = enviarDadesServidor(dadesTascaStringJSON,"../controllers/afegirTascaCalendari.php");
 	
 	crearTaulaTasques(resultat,dia,mes,any);
 }

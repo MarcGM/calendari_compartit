@@ -1,5 +1,5 @@
 <?php
-	include_once 'declaracio_clases.php';
+	include_once '../declaracio_clases.php';
 	//error_reporting(0);
 
 

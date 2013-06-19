@@ -5,6 +5,8 @@
 html, body{
 	height: 85%;
 	width: 99%;
+	background-image: url('../img/calendariPortada.jpg');
+	background-repeat:no-repeat;
 }
 #div_formLogin{
 	border-color: #000000;

@@ -10,5 +10,5 @@
 	}else{
 		$_SESSION['mesVisible']--;
 	}
-	echo '<meta http-equiv="Refresh" content="0; URL=p_prin.php"/>';
+	echo '<meta http-equiv="Refresh" content="0; URL=../views/p_prin.php"/>';
 ?>
